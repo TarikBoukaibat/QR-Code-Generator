@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+<title>QR Code</title>
+</head>
+<body>
+ <div class="home">
+    <div id="inf">
+        <form action="/send" method="post">
+             {% csrf_token %}
+            <span id="sp">Enter Your URL </span>
+            <input type="text" name="data" placeholder="URL" ><br>
+            <input type="submit" value="GENERATE">
+        </form>
+    </div>
+    <div id="im">
+        {% if data %}
+        <h4>Your QR Code is:</h4>
+            <img src="{% static 'image/QR Code.png' %}">
+        <div id="download">
+        <a  href="{% static 'image/QR Code.png' %}" download="QR Code"  class="download-btn">Download</a>
+        </div>
+        {% endif %}
+    </div>
+ </div>
+</body>
+</html>
